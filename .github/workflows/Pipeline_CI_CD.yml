@@ -1,11 +1,13 @@
 name: Build & Deploy Backend (Production)
 
+# Se ejecuta en cada push a main o manualmente desde la pestaña Actions
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
 
 jobs:
+  # El build no comienza hasta que todos los tests pasen
   test:
     name: CI - Test
     runs-on: windows-latest
@@ -58,6 +60,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     environment: production
+    # Variables de entorno para identificar los recursos de AWS
     env:
       AWS_REGION: us-east-1
       S3_BUCKET: powertoys-backend-prod
@@ -108,6 +111,7 @@ jobs:
             --application-name "${{ env.EB_APPLICATION }}" \
             --environment-names "${{ env.EB_ENVIRONMENT }}"
 
+      # Si el deploy o la espera fallan, se vuelve a la versión anterior
       - name: Rollback on failure
         if: failure() && (steps.deploy.conclusion == 'failure' || steps.wait.conclusion == 'failure')
         run: |
