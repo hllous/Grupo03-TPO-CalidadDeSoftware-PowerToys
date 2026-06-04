@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "us0H7GdovhQ=",
+  "dgSpecHash": "LCBAtt1L+Xk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\santi\\OneDrive\\Desktop\\Grupo03-TPO-CalidadDeSoftware-PowerToys\\pruebas\\PowerAccent.Tests.csproj",
+  "projectFilePath": "C:\\Users\\santi\\OneDrive\\Desktop\\Grupo03-TPO-CalidadDeSoftware-PowerToys\\pruebas\\ColorPicker.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\santi\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
     "C:\\Users\\santi\\.nuget\\packages\\microsoft.applicationinsights\\2.22.0\\microsoft.applicationinsights.2.22.0.nupkg.sha512",

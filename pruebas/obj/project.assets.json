@@ -1783,9 +1783,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\santi\\OneDrive\\Desktop\\Grupo03-TPO-CalidadDeSoftware-PowerToys\\pruebas\\PowerAccent.Tests.csproj",
-      "projectName": "PowerAccent.Tests",
-      "projectPath": "C:\\Users\\santi\\OneDrive\\Desktop\\Grupo03-TPO-CalidadDeSoftware-PowerToys\\pruebas\\PowerAccent.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\santi\\OneDrive\\Desktop\\Grupo03-TPO-CalidadDeSoftware-PowerToys\\pruebas\\ColorPicker.Tests.csproj",
+      "projectName": "ColorPicker.Tests",
+      "projectPath": "C:\\Users\\santi\\OneDrive\\Desktop\\Grupo03-TPO-CalidadDeSoftware-PowerToys\\pruebas\\ColorPicker.Tests.csproj",
       "packagesPath": "C:\\Users\\santi\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\santi\\OneDrive\\Desktop\\Grupo03-TPO-CalidadDeSoftware-PowerToys\\pruebas\\obj\\",
       "projectStyle": "PackageReference",

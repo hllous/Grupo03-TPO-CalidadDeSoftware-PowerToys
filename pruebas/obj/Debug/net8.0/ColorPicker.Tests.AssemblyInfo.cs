@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ColorPicker.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+95113e995111e4e03e0ea962b5f21f99ec753d3f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3d72c3f9dddf52c8eb6f63c3d0164e6f3f66712a")]
 [assembly: System.Reflection.AssemblyProductAttribute("ColorPicker.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ColorPicker.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
