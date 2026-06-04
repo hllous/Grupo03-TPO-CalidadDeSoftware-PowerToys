@@ -1,0 +1,84 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\santi\\OneDrive\\Desktop\\Grupo03-TPO-CalidadDeSoftware-PowerToys\\pruebas\\PowerAccent.Tests.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\santi\\OneDrive\\Desktop\\Grupo03-TPO-CalidadDeSoftware-PowerToys\\pruebas\\PowerAccent.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\santi\\OneDrive\\Desktop\\Grupo03-TPO-CalidadDeSoftware-PowerToys\\pruebas\\PowerAccent.Tests.csproj",
+        "projectName": "PowerAccent.Tests",
+        "projectPath": "C:\\Users\\santi\\OneDrive\\Desktop\\Grupo03-TPO-CalidadDeSoftware-PowerToys\\pruebas\\PowerAccent.Tests.csproj",
+        "packagesPath": "C:\\Users\\santi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\santi\\OneDrive\\Desktop\\Grupo03-TPO-CalidadDeSoftware-PowerToys\\pruebas\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\santi\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[3.6.1, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[3.6.1, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.11.1, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.421/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
