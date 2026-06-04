@@ -6,8 +6,26 @@ on:
   workflow_dispatch:
 
 jobs:
+  test:
+    name: CI - Test
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Run tests
+        run: dotnet test --configuration Release --verbosity normal
+
   build:
     name: CI - Build
+    needs: test
     runs-on: windows-latest
     outputs:
       artifact-name: backend-app
