@@ -94,11 +94,34 @@ jobs:
             --source-bundle S3Bucket="${{ env.S3_BUCKET }}",S3Key="releases/app-${{ github.sha }}.zip"
 
       - name: Deploy to Elastic Beanstalk environment
+        id: deploy
         run: |
           aws elasticbeanstalk update-environment \
             --application-name "${{ env.EB_APPLICATION }}" \
             --environment-name "${{ env.EB_ENVIRONMENT }}" \
             --version-label "v-${{ github.sha }}"
+
+      - name: Wait for deployment to complete
+        id: wait
+        run: |
+          aws elasticbeanstalk wait environment-updated \
+            --application-name "${{ env.EB_APPLICATION }}" \
+            --environment-names "${{ env.EB_ENVIRONMENT }}"
+
+      - name: Rollback on failure
+        if: failure() && (steps.deploy.conclusion == 'failure' || steps.wait.conclusion == 'failure')
+        run: |
+          PREVIOUS_VERSION=$(aws elasticbeanstalk describe-environments \
+            --application-name "${{ env.EB_APPLICATION }}" \
+            --environment-names "${{ env.EB_ENVIRONMENT }}" \
+            --query "Environments[0].VersionLabel" \
+            --output text)
+          echo "Deployment failed. Rolling back to $PREVIOUS_VERSION..."
+          aws elasticbeanstalk update-environment \
+            --application-name "${{ env.EB_APPLICATION }}" \
+            --environment-name "${{ env.EB_ENVIRONMENT }}" \
+            --version-label "$PREVIOUS_VERSION"
+          echo "Rollback to $PREVIOUS_VERSION completed."
 
       - name: Deployment summary
         run: |
