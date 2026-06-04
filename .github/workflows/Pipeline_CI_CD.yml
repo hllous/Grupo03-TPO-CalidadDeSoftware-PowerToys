@@ -52,3 +52,54 @@ jobs:
           name: backend-app
           path: ./publish
           if-no-files-found: error
+
+  deploy:
+    name: CD - Deploy to AWS
+    needs: build
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      AWS_REGION: us-east-1
+      S3_BUCKET: powertoys-backend-prod
+      EB_APPLICATION: powertoys-backend
+      EB_ENVIRONMENT: powertoys-backend-prod
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: backend-app
+          path: ./publish
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Package application
+        run: |
+          cd ./publish
+          zip -r ../app-${{ github.sha }}.zip .
+
+      - name: Upload package to S3
+        run: |
+          aws s3 cp ./app-${{ github.sha }}.zip s3://${{ env.S3_BUCKET }}/releases/app-${{ github.sha }}.zip
+
+      - name: Create Elastic Beanstalk application version
+        run: |
+          aws elasticbeanstalk create-application-version \
+            --application-name "${{ env.EB_APPLICATION }}" \
+            --version-label "v-${{ github.sha }}" \
+            --source-bundle S3Bucket="${{ env.S3_BUCKET }}",S3Key="releases/app-${{ github.sha }}.zip"
+
+      - name: Deploy to Elastic Beanstalk environment
+        run: |
+          aws elasticbeanstalk update-environment \
+            --application-name "${{ env.EB_APPLICATION }}" \
+            --environment-name "${{ env.EB_ENVIRONMENT }}" \
+            --version-label "v-${{ github.sha }}"
+
+      - name: Deployment summary
+        run: |
+          echo "Deployed version v-${{ github.sha }} to ${{ env.EB_ENVIRONMENT }} (${{ env.AWS_REGION }})"
