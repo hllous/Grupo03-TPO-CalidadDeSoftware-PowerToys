@@ -38,6 +38,10 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
+      # Detecta paquetes NuGet con vulnerabilidades conocidas antes de correr los tests
+      - name: Check for vulnerable dependencies
+        run: dotnet list package --vulnerable --include-transitive
+
       - name: Run tests
         run: dotnet test --configuration Release --verbosity normal
 
